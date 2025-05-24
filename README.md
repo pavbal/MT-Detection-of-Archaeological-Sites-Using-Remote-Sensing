@@ -1,4 +1,12 @@
-# Detection (scene classification) of archaeological sites (cropmarks) using remote sensing (aerial imagery)
+#  Detection (scene classification) of archaeological sites (cropmarks) using remote sensing (aerial imagery)
+#  WORK IN PROGRESS - this repository is not yet finished and is being updated
+## Repository introduction
+This repository contains the representative code for the Master's Thesis "Detection of archaeological sites using remote sensing"
+by Pavel Balda.
+
+The repository contains the representative version of thesis' code, models, figures, and data. Detailed info is provided in [the thesis PDF](Pavel%20Balda%20-%20Master's%20Thesis.pdf).
+
+Only a part of the data and code is included in the repository. The full dataset and code are available on request from the author.
 
 ## Environvment setup
 
@@ -22,16 +30,22 @@ python src/test.py \
         --use_gpu
 
 ```
-The above code will reproduce KILE results, to reproduce LIR results, `epochs` should be changed to `50` and `seed` to `1`
 
 ### Predict
+The following command will predict the images from given `image_folder` using the given model (`model_7.pt`) and save the 
+predictions to `predictions_model7.csv` (in a form of output probabilities).
 ```bash
 python predict.py \
   --model_base_path ../models/ \
   --model_name model_7.pt \
   --image_folder ./data/cropmark_dataset/cropmark_test_set/positive \
-  --output_csv_path ./results/predictions_model7.csv \
+  --output_csv_path ./results/predictions.csv \
   --plot_random_preds \
   --use_gpu
 
 ```
+### Train
+
+### Neural data generation
+Neural data generation (via SDXL 1.0 LoRA finetuning) is not implemented in the repository. The modification of the [Colab Notebook by jhj0517](https://colab.research.google.com/github/jhj0517/finetuning-notebooks/blob/master/sdxl/finetuning_notebooks_sdxl_lora_dreambooth.ipynb)
+was used to generate all the neural images.

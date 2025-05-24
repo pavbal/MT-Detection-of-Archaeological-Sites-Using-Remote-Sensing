@@ -19,9 +19,9 @@ def main():
 
     parser.add_argument("--model_base_path", type=str, default="../models/", help="Path to model directory.")
     parser.add_argument("--model_name", type=str, default="model_7.pt", help="Name of the file with the model weights.")
-    parser.add_argument("--image_folder", type=str, default="../data/cropmark_dataset/cropmark_test_set", help="Folder with input images.")
+    parser.add_argument("--image_folder", type=str, default="../data/cropmark_dataset/cropmark_test_set/positive", help="Folder with input images.")
     parser.add_argument("--use_gpu", action="store_true", help="Use GPU for testing.")
-    parser.add_argument("--output_csv_path", type=str, default="predictions.csv", help="Path to save predictions CSV.")
+    parser.add_argument("--output_csv_path", type=str, default="results/predictions.csv", help="Path to save predictions CSV.")
     parser.add_argument("--plot_random_preds", action="store_true", help="Plot a few random predictions.")
 
     args = parser.parse_args()
@@ -36,7 +36,7 @@ def main():
 
     print(f"Model path: {model_path}")
     print(f"Image folder: {args.image_folder}")
-    print(f"Plot FN and FP: {args.plot_FN_FP}")
+    print(f"Plot examples: {args.plot_random_preds}")
     print(f"Device preferred: {'cuda' if args.use_gpu else 'cpu'}")
 
     # ======= SEED =======
@@ -44,8 +44,6 @@ def main():
     random.seed(SEED)
     np.random.seed(SEED)
     torch.manual_seed(SEED)
-
-    plot_fn_fp = args.plot_FN_FP
 
 
 
