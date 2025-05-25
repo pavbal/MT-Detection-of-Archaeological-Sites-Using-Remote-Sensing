@@ -33,7 +33,7 @@ python src/test.py \
 
 ### Predict
 The following command will predict the images from given `image_folder` using the given model (`model_7.pt`) and save the 
-predictions to `predictions_model7.csv` (in a form of output probabilities).
+predictions to `predictions.csv` (in a form of output probabilities).
 ```bash
 python predict.py \
   --model_base_path ../models/ \
@@ -45,6 +45,25 @@ python predict.py \
 
 ```
 ### Train
+
+### Procedural data genration
+To generate the procedural masks and apply them to real geoportal imagery, run the following command.
+```bash
+python src/mask_generation/create_masked_images.py \
+  --input_folder data/geoportal_mock_dataset/negative \
+  --output_folder data/geoportal_mock_dataset/positive_procedural \
+  --positive_mask_prob 0.85 \
+  --multi_type_probs 0.8 0.15 0.05 \
+  --repeat_single_mask_prob 0.1 \
+  --mask_type_weights 0.2 0.2 0.2 0.2 0.2 \
+  --alpha_random_min 0.1 \
+  --alpha_random_max 0.25 \
+  --save_masks \
+  --plot_mask_stats \
+  --plot_examples \
+  --plot_mask_examples \
+  --seed 43
+```
 
 ### Neural data generation
 Neural data generation (via SDXL 1.0 LoRA finetuning) is not implemented in the repository. The modification of the [Colab Notebook by jhj0517](https://colab.research.google.com/github/jhj0517/finetuning-notebooks/blob/master/sdxl/finetuning_notebooks_sdxl_lora_dreambooth.ipynb)
