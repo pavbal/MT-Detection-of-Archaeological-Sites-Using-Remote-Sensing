@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 
 ### Test on cropmark test set
-To reproduce the results of the paper, please run the following command (for models `model_2` - `model_13`). Argument `plot_FN_FP` 
+To reproduce the results presented in the paper, please run the following command (for models `model_2` - `model_13`). Argument `plot_FN_FP` 
 will plot the example subset of false negatives and false positives of the model on the test set. Argument `use_gpu` will use GPU for training if available. 
 ```bash
 python src/test.py \
@@ -32,8 +32,8 @@ python src/test.py \
 ```
 
 ### Predict
-The following command will predict the images from given `image_folder` using the given model (`model_7.pt`) and save the 
-predictions to `predictions.csv` (in a form of output probabilities).
+The following command will predict the images from `image_folder` using the given model (`model_7.pt`) and save the 
+predictions to `./results/predictions.csv` (in a form of output probabilities).
 ```bash
 python predict.py \
   --model_base_path ../models/ \
@@ -47,7 +47,8 @@ python predict.py \
 ### Train
 
 ### Procedural data genration
-To generate the procedural masks and apply them to real geoportal imagery, run the following command.
+To generate the procedural masks and apply them to real geoportal imagery, run the following command. For more info
+about the arguments, please run the script with `--help` argument.
 ```bash
 python src/mask_generation/create_masked_images.py \
   --input_folder data/geoportal_mock_dataset/negative \

@@ -75,16 +75,16 @@ def main():
     parser.add_argument("--positive_mask_prob", type=float, default=0.8, help="Probability of applying a positive cropmark mask (darker mask)")
     parser.add_argument("--multi_type_probs", nargs=3, type=float, default=[0.85, 0.10, 0.05], help="Probabilities for 1, 2, or 3 mask types on the same image.")
     parser.add_argument("--repeat_single_mask_prob", type=float, default=0.05, help="Probability of repeating a single mask type multiple times on the same image.")
-    parser.add_argument("--mask_type_weights", nargs=5, type=float, default=[0.20, 0.20, 0.17, 0.18, 0.25])
-    parser.add_argument("--alpha_random_min", type=float, default=0.1)
-    parser.add_argument("--alpha_random_max", type=float, default=0.24)
+    parser.add_argument("--mask_type_weights", nargs=5, type=float, default=[0.20, 0.20, 0.17, 0.18, 0.25], help="Relative weights for each mask type. Should sum to 1.0. Order: circular, borders, grids, filled, rectangular.")
+    parser.add_argument("--alpha_random_min", type=float, default=0.10, help="Minimum alpha value for mask application. The smaller the value, the less visible and distinct the mask will be. Reccommended range is 0.05 to 0.15.")
+    parser.add_argument("--alpha_random_max", type=float, default=0.15, help="Maximum alpha value for mask application. The bigger the value, the more visible and distinct the mask will be. Recommended range is 0.15 to 0.25.")
     parser.add_argument("--input_folder", type=str, default="data/geoportal_mock_dataset/negative",
                         help="Path to input folder with original images.")
     parser.add_argument("--output_folder", type=str, default="data/geoportal_mock_dataset/positive_procedural",
                         help="Path to output folder for masked images.")
 
     parser.add_argument("--save_masks", action="store_true", help="Save generated masks to a separate folder.")
-    parser.add_argument("--plot_mask_stats", action="store_true")
+    parser.add_argument("--plot_mask_stats", action="store_true", help="Plot distribution histogram of applied mask types.")
     parser.add_argument("--plot_examples", action="store_true", help="Plot examples of generated masks.")
     parser.add_argument("--seed", type=int, default=43, help="Random seed for reproducibility.")
     parser.add_argument("--plot_mask_examples", action="store_true", help="Plot tiled figure with examples of individual mask types. Only if save_masks is enabled.")
