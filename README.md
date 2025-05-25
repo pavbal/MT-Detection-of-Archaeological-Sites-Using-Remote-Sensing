@@ -1,10 +1,10 @@
 #  Detection (scene classification) of archaeological sites (cropmarks) using remote sensing (aerial imagery)
 #  WORK IN PROGRESS - this repository is not yet finished and is being updated
 ## Repository introduction
-This repository contains the representative code for the Master's Thesis "Detection of archaeological sites using remote sensing"
+This repository serves as a supplement to the Master's Thesis "Detection of archaeological sites using remote sensing"
 by Pavel Balda.
 
-The repository contains the representative version of thesis' code, models, figures, and data. Detailed info is provided in [the thesis PDF](Pavel%20Balda%20-%20Master's%20Thesis.pdf).
+Repository contains the representative version of thesis' code, models, figures, and data. Detailed info is provided in [the thesis PDF](Pavel%20Balda%20-%20Master's%20Thesis.pdf).
 
 Only a part of the data and code is included in the repository. The full dataset and code are available on request from the author.
 
@@ -15,10 +15,10 @@ To run scripts, please install requirements as follows:
 pip install -r requirements.txt
 ```
 
-## Training and prediction
+## Prediction and training
 
 
-### Test script
+### Test on cropmark test set
 To reproduce the results of the paper, please run the following command (for models `model_2` - `model_13`). Argument `plot_FN_FP` 
 will plot the example subset of false negatives and false positives of the model on the test set. Argument `use_gpu` will use GPU for training if available. 
 ```bash
